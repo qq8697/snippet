@@ -1,28 +1,16 @@
-# [git]()
-version 2.13.3
+# [mark2web]()
+version 0.1.0
 
 作者：[武宏斌](http://www.wuhongbin.com)
 
-## t
-- [正则的扩展](#docs/regex)
-- [数值的扩展](#docs/number)
-- [函数的扩展](#docs/function)
-- [数组的扩展](#docs/array)
-- [对象的扩展](#docs/object)
 
-## 入门
-- [How do I use ditto?](#docs/how_do_i_use_ditto)
-- [How does it work?](#docs/how_does_it_work)
-- [Why use ditto?](#docs/why_use_ditto)
-- [How do I run ditto locally?](#docs/how_do_i_run_ditto_locally)
-- [How I write equations in ditto?](#docs/maths_demo)
-- [Features](#docs/features)
+## 目录
+- [如何使用？](#docs/how_do_i_use_mark2web)
+- [是如何工作的？](#docs/how_does_it_work)
+- [为什么用？](#docs/why_use_mark2web)
+- [如何本地运行？](#docs/how_do_i_run_mark2web_locally)
+- [特性与参考](#docs/features_and_references)
 
-## 精通
-- [playground](http://chutsu.github.io/playground)
-- [direnv](http://direnv.net)
-- [rover](http://wallarelvo.github.io/rover)
-- [zeromq-ros](http://wallarelvo.github.io/zeromq-ros)
 
 ## 参考
 - [源码](http://github.com/ruanyf/es6tutorial/)
