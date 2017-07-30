@@ -2,7 +2,7 @@ $(function($) {
 
   var mark2web = {
     
-    // page elements
+    // dom elements
     sidebar_id: $("#sidebar"),
     content_id: $("#content"),
     back_to_top_id: $("#back_to_top"),
@@ -12,7 +12,7 @@ $(function($) {
    
     // display elements
     highlight_code: true,
-    sidebar: true, // mobile hide
+    sidebar: true, // mobile hide TODO1
     back_to_top_button: true,
     save_progress: true, 
     flip_chapter:true,
@@ -35,7 +35,7 @@ $(function($) {
       init_back_to_top_button();
     }
 
-    // intialize flip_chapter
+    // intialize flip_chapter button
     if(mark2web.flip_chapter){
       init_flip_chapter();
     }
@@ -70,39 +70,29 @@ $(function($) {
       }, 300);
 
       // highlight the relevant section
-      original_color = header.css("color");
-      header.animate({ color: "#ED1C24", }, 500, function() {
-        // revert back to orig color
-        $(this).animate({color: original_color}, 2500);
-      });
+      // original_color = header.css("color");
+      // header.animate({ color: "#ED1C24", }, 500, function() {
+      //   // revert back to orig color
+      //   $(this).animate({color: original_color}, 2500);
+      // });
+      header.addClass('go');
+      setTimeout(function(){
+        header.removeClass('go');
+      },2500)
     });
   }
 
   function create_page_anchors() {
-    // create page anchors by matching li's to headers
-    // if there is a match, create click listeners
-    // and scroll to relevant sections
+    // create page anchors for header level 2 insertafter header level 1
+    // and create click listeners scroll to relevant sections
 
-    // go through header level 2 and 3
-    
-    // parse all headers
     var headers = [];
     $(mark2web.content_id.selector + ' h2').map(function() {
       var header=$(this).text();
       headers.push(header);
       $(this).addClass(replace_symbols(header));
-      //this.id=replace_symbols(header);
     });  
 
-      // parse and set links between li and h2
-      // $(mark2web.content_id.selector + ' ul li').map(function() {
-      //   for (var j = 0; j < headers.length; j++) {
-      //     if (headers[j] === $(this).text()) {
-      //       li_create_linkage($(this), i);
-      //     }
-      //   }
-      // });
-      // inner page nav
     if (headers.length !== 0) {
       var p_tag=$('<p>Contents:</p>').insertAfter('#content h1');
       var ul_tag = $('<ul></ul>')
@@ -127,19 +117,6 @@ $(function($) {
       // not begin with http
       if ($(this).attr("src").slice(0, 4) !== "http") {
         $(this).attr("src", "docs/" + $(this).attr("src"));
-        // var base_dir = 'doc';
-        // var src = $(this).attr("src");
-        // docs/how_does_it_work"->docs
-        // var url = location.hash.replace("#", "");
-        // var base_dir = url.split("/")[0];
-        // split and extract base dir
-        // url = url.split("/");
-        //docs
-        // var base_dir = url.slice(0, url.length - 1).toString();
-
-        // normalize the path (i.e. make it absolute)
-        // $(this).attr("src", base_dir + "/" + src);
-        
       }
     });
   }
@@ -161,17 +138,17 @@ $(function($) {
     // images/xx.png->docs/images/xx.png
     normalize_paths();
 
-    // 
+    // create page anchors
     create_page_anchors();
 
-    // 代码高亮
+    // highlight code
     if (mark2web.highlight_code) {
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);
       });
     }
 
-    // 隐藏首页“上一章”&末页“下一章”
+    // hide or show prev and next
     var hash=location.hash;
     if(hash===mark2web.link_list[0]||hash===''){
       $('#pageup').css('display', 'none');
@@ -190,33 +167,15 @@ $(function($) {
     // window scrollTo top
     window.scrollTo(0, 0);
 
-    // progress reset
-    // if (mark2web.save_progress && store.get('list-progress') !== location.hash) {
-    //   store.set('list-progress', location.hash);
-    //   store.set('page-progress', 0);
-    // }
-
     // ajax url
     var path = location.hash.replace("#", "./");
 
-    // default page if hash is empty
-    // var current_page = location.pathname.split("/").pop();
-    
-    // if (location.pathname === "/index.html") {
-    //   path = location.pathname.replace("index.html", mark2web.index);
-    //   normalize_paths();
-    //   //console.log("location.pathname change to readme.md")
-    // } else 
+    // default  hash is empty
     if (path === "") {
       path = location.pathname + mark2web.index;
-      // normalize_paths();
     } else {
       path = path + ".md";
     }
-
-    // 取消scroll事件的监听函数
-    // 防止改变下面的变量perc的值
-    // $(window).off('scroll');
 
     // get md file to render 
     show_loading();
@@ -243,7 +202,6 @@ $(function($) {
       var h = $('body').height();
       var sHeight = h - wh;
       window.requestAnimationFrame(function(){
-        // var perc = Math.max(0, Math.min(1, $w.scrollTop() / sHeight));
         var perc = $w.scrollTop() / sHeight;
         updateProgress(perc);
       });
@@ -299,7 +257,7 @@ $(function($) {
     $.get(mark2web.sidebar_file, function(data) {
       mark2web.sidebar_id.html(marked(data));
 
-      // sidebar link list
+      // create sidebar link list
       create_link_list()
 
     }, "text").fail(function() {
@@ -337,7 +295,6 @@ $(function($) {
     clearInterval(mark2web.loading_interval);
     mark2web.loading_id.hide();
   }
-  // var perc = mark2web.save_progress ? store.get('page-progress') || 0 : 0;
-
+  
   window.mark2web = mark2web;
 });

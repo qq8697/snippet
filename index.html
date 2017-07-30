@@ -2,89 +2,50 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <title>git教程</title>
-    <!-- <link rel="stylesheet" href="css/app.css"> -->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    <!-- JQUERY -->
+    <!-- jquery -->
     <script src="js/jquery-1.11.0.min.js"></script>
-    <!-- <script src="//code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script> -->
 
-    <!-- MARKED -->
-    <!-- <script src="//chutsu.github.io/ditto/ver/latest/marked.js"></script> -->
+    <!-- marked -->
     <script src="js/marked.js"></script>
 
-    <!-- HIGHLIGHT.JS -->
+    <!-- highlight -->
     <link rel="stylesheet" href="css/github.css">
-    <script src="//chutsu.github.io/ditto/ver/latest/highlight.js"></script>
-    <!-- <script src="js/highlight.js"></script> -->
-
-    <!-- MATHJAX -->
-    <!-- <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [['$','$']],
-          processRefs: true
-        },
-        TeX: {
-          equationNumbers: {
-            autoNumber: "all",
-            formatID: function(id) { return "(" + id  + ")"},
-            formatURL: function(id) { return null }
-          }
-        }
-      });
-    </script> -->
-    <!-- <script type="text/javascript"
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
-    </script> -->
+    <script src="js/highlight.js"></script>
 
     <!-- store -->
     <script src="js/store.js"></script>
 
-    <!-- <script src="js/prism.js"></script>
-    <link rel="stylesheet" href="css/prism.css"> -->
     <!-- mark2web -->
     <link rel="stylesheet" href="css/mark2web.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css"> -->
     <script src="js/mark2web.js"></script>
 </head>
 <body>
-    <!-- ESSENTIAL -->
+    <!-- dom element -->
     <div id="sidebar"></div>
     <div id="content"></div>
-    <div id="hide"></div>
-
-    <!-- OPTIONAL -->
-    <div id="back_to_top">top</div>
-    <!-- <div id="edit">edit</div> -->
     <div id="loading">Loading ...</div>
     <div id="error">Opps! ... File not found!</div>
-    <div id="flip"><div id="pageup">pre</div><div id="pagedown">next</div></div>
-    <div id="progress"></div>
 
-    <!-- DITTO -->
+    <!-- display element -->
+    <div id="back_to_top">top</div>
+    <div id="flip">
+      <div id="pageup">pre</div>
+      <div id="pagedown">next</div>
+    </div>
+    <div id="progress"></div>
+    
     <script>
         $(function($) {
-          // essential settings
+          // settings
           mark2web.index = "README.md";
           mark2web.sidebar_file = "sidebar.md";
           mark2web.document_title = 'git教程';
 
           // run
           mark2web.run();
-
-          // optional settings if you want github search
-          // ditto.github_username = "chutsu";   // <------- EDIT ME!!
-          // ditto.github_repo = "ditto";        // <------- EDIT ME!!
-          // ditto.highlight_code = true;       // <------- EDIT ME!!
-
-          // where the docs are actually stored on github - so you can edit
-          // ditto.base_url = "https://github.com/chutsu/ditto/edit/gh-pages";
-
-          
         });
     </script>
 </body>
