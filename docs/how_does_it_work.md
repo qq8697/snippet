@@ -4,7 +4,7 @@
 当你进入该站的时，由服务器默认打开 `index.html` 文件，其中引入的 `mark2web.js` 脚本会请求加载 `sidebar.md` 和 `README.md` 文件，使用 [marked][marked_github] 将Markdown文件（后缀名为.md）渲染为HTML文件，并分别展示到 `#sidebar` 和 `#content` 中。
 
 页面布局如下图所示：
-![layout](images/layout.JPG)
+![layout](images/layout.jpg)
 
 上一节讲到，在 `sidebar.md` 文件中以如下格式定义要链接的其他文档：
 
