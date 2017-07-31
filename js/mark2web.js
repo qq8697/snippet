@@ -18,7 +18,7 @@ $(function($) {
     flip_chapter:true,
 
     // data
-    link_list:[],
+    link_list:[''],
 
     // initialize function
     run: initialize

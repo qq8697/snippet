@@ -1,4 +1,4 @@
-# [mark2web]()
+# [mark2web](/)
 version 0.1.0
 
 作者：[武宏斌](http://www.wuhongbin.com)
