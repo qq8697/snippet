@@ -1,6 +1,6 @@
 # 我该如何使用mark2web？
 
-## File Structure
+## 项目结构
 如下所示：
 
     index.html
@@ -12,7 +12,8 @@
 		images/	# set image files here
 	favicon.ico
 
-**NOTE**: 如果使用 [Github Pages][Github Pages] 部署，请将整个文件结构置于 `gh-pages` 分支下；如果使用自己的主机部署，并用 [nginx][nginx] 或 [apache][apache] 做服务器，请将 `root` 指向项目根目录。
+**NOTE**: 如果使用 [Github Pages][Github Pages] 部署，请将整个文件结构置于 `gh-pages` 分支下；如果使用自己的主机部署，并用 [nginx][nginx] 或 [apache][apache] 做服务器，请将 `root` 指向项目根目录。  
+» 点击下载 [项目压缩包][project]
 
 ## index.html
 [Download][index_file] (<- 右键 "另存为") 或者将如下代码拷贝保存为 `index.html`
@@ -83,7 +84,7 @@ For example:
 
 **NOTE**：木有后缀名，么有后缀名，没有后缀名。
 
-## README.md
+## README.md & docs/some_doc.md
 You can put anything in here as you see fit.
 
 
@@ -91,3 +92,4 @@ You can put anything in here as you see fit.
 [nginx]:https://nginx.org/
 [apache]:http://www.apache.org/
 [index_file]:https://github.com/qq8697/mark2web/blob/gh-pages/index.html
+[project]:https://github.com/qq8697/mark2web/archive/gh-pages.zip

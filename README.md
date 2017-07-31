@@ -1,5 +1,5 @@
-#mark2web
-意如其名， [mark2web][1] 用于由MarkDown文件生成Web页面。 准确的说是由MarkDown组成的文件系统生成单页面应用（Single Page Application），效果参考 [Backbone.js][2]，» 项目线上 [demo][3]，» 点击下载 [项目压缩包][project]。
+#mark2web  
+意如其名， [mark2web][1] 用于由MarkDown文件生成Web页面。 准确的说是由MarkDown组成的文件系统生成单页面应用（Single Page Application），效果参考 [Backbone.js][2]，» 项目线上 [demo][3]。
 
 出发点:
 
@@ -9,12 +9,10 @@
 
 如果你正有同样的想法，请参考[如何使用mark2web][6]。  
 
-
 [1]: https://github.com/qq8697/mark2web
 [2]: http://backbonejs.org/
 [3]: http://mark2web.wuhongbin.com
 [4]: http://www.appinn.com/markdown/
 [5]: https://pages.github.com/
 [6]: #docs/how_do_i_use_mark2web
-[project]:https://github.com/qq8697/mark2web/archive/gh-pages.zip
 
