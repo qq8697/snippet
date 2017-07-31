@@ -1,19 +1,15 @@
 # How does it work?
 
-**Contents**:
 
-- General
-- Other
 
 ## General
-### h3
-### 无人性
+
 When you open the `index.html` file, the javascript file `ditto.js` opens
 `sidebar.md` and `README.md` files converts the file using
 [marked][marked_github] and displays the rendered html (unless defined
 differently by you otherwise).
 
-![test](http://pagead2.googlesyndication.com/sadbundle/$dns%3Doff$/14050505237000933883/2-728x90.jpg)
+
 ![layout](images/layout.png)
 
 Documentation defined in `sidebar.md` should be of the form:

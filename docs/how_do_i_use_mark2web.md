@@ -1,138 +1,93 @@
-# How do I use ditto?
-
-Contents:
-- File Structure
-- index.html
-- sidebar.md
-- README.md
-
+# 我该如何使用mark2web？
 
 ## File Structure
-`ditto` expects the file structure of your documentation website to look
-something like this:
+如下所示：
 
     index.html
     sidebar.md
     README.md
-    docs/  # insert markdown files here!
+	js/
+	css/
+    docs/  # insert markdown files here
+		images/	# set image files here
+	favicon.ico
+
+**NOTE**: 如果使用 [Github Pages][Github Pages] 部署，请将整个文件结构置于 `gh-pages` 分支下；如果使用自己的主机部署，并用 [nginx][nginx] 或 [apache][apache] 做服务器，请将 `root` 指向项目根目录。
 
 ## index.html
-**NOTE**: Before you create the `index.html` file, please know that `ditto`
-requires a http server for the documentation to be pulled down. If you're using
-`gh-pages` in your github, just push this `index.html` along with other files
-discussed in section `File Structure` to your `gh-pages` branch on github to
-host your files.
-
-[Download][index_file](<- right-click "Save as") or copy the following code
-snippet and save it as `index.html`
+[Download][index_file] (<- 右键 "另存为") 或者将如下代码拷贝保存为 `index.html`
+：
 
     <!DOCTYPE html>
-    <html>
-    <head>
-        <title>TITLE</title>  <!-- EDIT ME!! -->
-
-        <!-- JQUERY -->
-        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
-
-        <!-- MARKED -->
-        <script src="//chutsu.github.io/ditto/ver/latest/marked.js"></script>
-
-        <!-- HIGHLIGHT.JS -->
-        <link rel="stylesheet" href="//chutsu.github.io/ditto/ver/latest/github.css">
-        <script src="//chutsu.github.io/ditto/ver/latest/highlight.js"></script>
-
-        <!-- MATHJAX -->
-        <script type="text/x-mathjax-config">
-            MathJax.Hub.Config({
-                tex2jax: {
-                    inlineMath: [['$','$']],
-                    processRefs: true
-                },
-                TeX: {
-                    equationNumbers: {
-                        autoNumber: "all",
-                        formatID: function(id) { return null },
-                        formatURL: function(id) { return null }
-                    }
-                }
-            });
-        </script>
-        <script type="text/javascript"
-            src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
-        </script>
-
-        <!-- DITTO CSS -->
-        <link rel="stylesheet" href="//chutsu.github.io/ditto/ver/latest/ditto.css">
-        <script src="//chutsu.github.io/ditto/ver/latest/ditto.js"></script>
-    </head>
-    <body>
-        <!-- ESSENTIAL -->
-        <div id="sidebar"></div>
-        <div id="content"></div>
-        <div id="hide"></div>
-
-        <!-- OPTIONAL -->
-        <div id="back_to_top">top</div>
-        <div id="edit">edit</div>
-        <div id="loading">Loading ...</div>
-        <div id="error"></div>
-
-        <!-- DITTO -->
-        <script>
-            $(function($) {
-            // essential settings
-            ditto.index = "README.md",
-            ditto.sidebar_file = "sidebar.md",
-
-            // optional settings if you want github search
-            ditto.github_username = null;   // <------- EDIT ME!!
-            ditto.github_repo = null;       // <------- EDIT ME!!
-            ditto.highlight_code = false;    // <------- EDIT ME!!
-
-            // where the docs are actually stored on github - so you can edit
-            // e.g. https://github.com/chutsu/ditto/edit/gh-pages
-            ditto.base_url = "";            // <------- EDIT ME!!
-
-            // run
-            ditto.run();
-            });
-        </script>
-    </body>
-    </html>
-
-Edit:
-- `ditto.index`
-- `ditto.sidebar_file`
-- `ditto.github_username`
-- `ditto.github_repo`
-- `ditto.base_url`
-
-as you see fit.
-
+	<html>
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <title>mark2web</title>
+	    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+	
+	    <!-- jquery -->
+	    <script src="js/jquery-1.11.0.min.js"></script>
+	
+	    <!-- marked -->
+	    <script src="js/marked.js"></script>
+	
+	    <!-- highlight -->
+	    <link rel="stylesheet" href="css/github.css">
+	    <script src="js/highlight.js"></script>
+	
+	    <!-- store -->
+	    <script src="js/store.js"></script>
+	
+	    <!-- mark2web -->
+	    <link rel="stylesheet" href="css/mark2web.css">
+	    <script src="js/mark2web.js"></script>
+	</head>
+	<body>
+	    <!-- dom element -->
+	    <div id="sidebar"></div>
+	    <div id="content"></div>
+	    <div id="loading">Loading ...</div>
+	    <div id="error">Opps! ... File not found!</div>
+	
+	    <!-- display element -->
+	    <div id="back_to_top">top</div>
+	    <div id="flip">
+	      <div id="pageup">pre</div>
+	      <div id="pagedown">next</div>
+	    </div>
+	    <div id="progress"></div>
+	    
+	    <script>
+	        $(function($) {
+	          // settings
+	          mark2web.index = "README.md";
+	          mark2web.sidebar_file = "sidebar.md";
+	          mark2web.document_title = 'mark2web';
+	
+	          // run
+	          mark2web.run();
+	        });
+	    </script>
+	</body>
+	</html>
 
 ## sidebar.md
-In the `sidebar.md` file you can create links to documentation you wish to list
-(just as you would in markdown). You have to list them in the form:
+在 `sidebar.md` 文件中创建你想要列出的文档和链接，格式如下：
 
-    #folder_containing_docs/file_name_without_extension
+    #docs/file_name_without_extension
 
 For example:
 
-    - [Documentation 1](#docs/document_1)
-    - [Documentation 2](#docs/document_2)
-    - [Documentation 3](#docs/document_3)
+	- [是如何工作的？](#docs/how_does_it_work)
+	- [为什么用？](#docs/why_use_mark2web)
 
-If you want the GitHub search bar enter the following in the same file:
-
-    [ditto:searchbar]
-
-**IMPORTANT NOTE**:
-- **This will only search markdown files in your repo's master branch.**
-- Add `#` infront of `docs`, where `docs` is the folder where `document_1.md` resides
-- Also ___DO NOT___ INCLUDE THE FILE EXTENSION AT THE END!
+**NOTE**：木有后缀名，么有后缀名，没有后缀名。
 
 ## README.md
-Do I really have to tell you what to put in here?
+You can put anything in here as you see fit.
 
-[index_file]: http://raw.githubusercontent.com/chutsu/ditto/master/ver/latest/index.html
+
+[Github Pages]: https://pages.github.com/
+[nginx]:https://nginx.org/
+[apache]:http://www.apache.org/
+[index_file]:https://github.com/qq8697/mark2web/blob/gh-pages/index.html
