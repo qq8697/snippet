@@ -10,7 +10,7 @@ When you open the `index.html` file, the javascript file `ditto.js` opens
 differently by you otherwise).
 
 
-![layout](images/layout.png)
+![layout](images/layout.JPG)
 
 Documentation defined in `sidebar.md` should be of the form:
 
