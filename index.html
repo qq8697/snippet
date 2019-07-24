@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>mark2web</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- jquery -->
+    <script src="js/jquery-1.11.0.min.js"></script>
+
+    <!-- marked -->
+    <script src="js/marked.js"></script>
+
+    <!-- highlight -->
+    <link rel="stylesheet" href="css/github.css">
+    <script src="js/highlight.js"></script>
+
+    <!-- store -->
+    <script src="js/store.js"></script>
+
+    <!-- mark2web -->
+    <link rel="stylesheet" href="css/mark2web.css">
+    <script src="js/mark2web.js"></script>
+</head>
+<body>
+    <!-- dom element -->
+    <div id="sidebar"></div>
+    <div id="content"></div>
+    <div id="loading">Loading ...</div>
+    <div id="error">Opps! ... File not found!</div>
+
+    <!-- display element -->
+    <div id="back_to_top">top</div>
+    <div id="flip">
+      <div id="pageup">pre</div>
+      <div id="pagedown">next</div>
+    </div>
+    <div id="progress"></div>
+    
+    <script>
+        $(function($) {
+          // settings
+          mark2web.index = "README.md";
+          mark2web.sidebar_file = "sidebar.md";
+          mark2web.document_title = 'mark2web';
+
+          // run
+          mark2web.run();
+        });
+    </script>
+</body>
+</html>
